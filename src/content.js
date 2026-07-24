@@ -5,7 +5,7 @@ export const content = {
     tagline: "Fotografė · Kaunas",
     instagram: "gudasiute_photography",
     instagramUrl: "https://instagram.com/gudasiute_photography",
-    email: "vaidile.gudasiute@gmail.com",
+    email: "vaidilephotography@gmail.com",
     phone: "+370 623 45 678",
     location: "Kaunas, Lietuva",
   },
