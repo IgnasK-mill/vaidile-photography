@@ -20,7 +20,7 @@ export const content = {
   },
 
   hero: {
-    eyebrow: "Fotografija · 2018 — 2026",
+    eyebrow: "Fotografija · 2022 — 2026",
     title: "Akimirkos,",
     titleAccent: "kurios lieka amžinai.",
     subtitle: "Portretai, vestuvės ir gimtadieniai — kiekvieną emociją įamžinu su meile ir jautrumu.",
@@ -63,9 +63,9 @@ export const content = {
   "Siekiu, kad nuotraukos išliktų ne tik prisiminimu, bet ir jausmu, prie kurio norėtųsi sugrįžti vėl ir vėl. Kviečiu susipažinti su mano darbais ir kartu įamžinti jūsų ypatingas akimirkas.",
 ],
     stats: [
-      { number: "200+", label: "Fotosesijų" },
-      { number: "50+", label: "Vestuvių" },
-      { number: "8+", label: "Metų patirtis" },
+      { number: "500+", label: "Valandų redagavime" },
+      { number: "50+", label: "Fotosesijų" },
+      { number: "4+", label: "Metų patirtis" },
     ],
     values: [
       { title: "Profesionalumas", desc: "Aukštos kokybės įranga ir patirtis" },
