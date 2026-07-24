@@ -15,8 +15,8 @@ export default function Footer() {
         <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <p className="font-display text-3xl text-ivory mb-3">
-              Vaidilė<span className="text-gold">.</span>
+            <p className="font-display text-2xl md:text-3xl text-ivory mb-3">
+              Vaidilė<span className="text-gold">.</span>Gudašiūtė
             </p>
             <p className="text-xs uppercase tracking-ultra-wide text-mist font-light mb-4">
               {content.brand.tagline}

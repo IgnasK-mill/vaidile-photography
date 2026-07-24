@@ -38,9 +38,9 @@ export default function Navbar() {
         {/* Brand */}
         <button
           onClick={() => scrollTo('hero')}
-          className="font-display text-2xl md:text-3xl text-ivory tracking-wide hover:text-gold transition-colors duration-500"
+          className="font-display text-lg sm:text-xl md:text-2xl lg:text-3xl text-ivory tracking-wide hover:text-gold transition-colors duration-500 whitespace-nowrap"
         >
-          Vaidilė<span className="text-gold">.</span>
+          Vaidilė<span className="text-gold">.</span>Gudašiūtė
         </button>
 
         {/* Desktop links */}
