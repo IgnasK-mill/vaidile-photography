@@ -185,7 +185,7 @@ export const content = {
   },
 
   footer: {
-    tagline: "Fotografuoju su meile nuo 2018 m.",
-    rights: "Visos teisės saugotos.",
+    tagline: "Fotografuoju su meile nuo 2022 m.",
+    rights: "Visos teisės įgalintos.",
   },
 };
