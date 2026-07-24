@@ -38,25 +38,25 @@ export default function Navbar() {
         {/* Brand */}
         <button
           onClick={() => scrollTo('hero')}
-          className="font-display text-lg sm:text-xl md:text-2xl lg:text-3xl text-ivory tracking-wide hover:text-gold transition-colors duration-500 whitespace-nowrap"
+          className="font-display text-lg sm:text-xl lg:text-xl xl:text-2xl text-ivory tracking-wide hover:text-gold transition-colors duration-500 whitespace-nowrap"
         >
           Vaidilė<span className="text-gold">.</span>Gudašiūtė
         </button>
 
         {/* Desktop links */}
-        <div className="hidden lg:flex items-center gap-10">
+        <div className="hidden lg:flex items-center gap-5 xl:gap-8">
           {links.map((link) => (
             <button
               key={link.id}
               onClick={() => scrollTo(link.id)}
-              className="text-sm uppercase tracking-ultra-wide text-pearl hover:text-gold transition-colors duration-500 font-light"
+              className="text-xs xl:text-sm uppercase tracking-widest text-pearl hover:text-gold transition-colors duration-500 font-light whitespace-nowrap"
             >
               {link.label}
             </button>
           ))}
           <button
             onClick={() => scrollTo('contact')}
-            className="text-sm uppercase tracking-ultra-wide border border-gold text-gold hover:bg-gold hover:text-obsidian px-6 py-3 transition-all duration-500 font-light"
+            className="text-xs xl:text-sm uppercase tracking-widest border border-gold text-gold hover:bg-gold hover:text-obsidian px-4 xl:px-6 py-2.5 xl:py-3 transition-all duration-500 font-light whitespace-nowrap"
           >
             {content.nav.cta}
           </button>
