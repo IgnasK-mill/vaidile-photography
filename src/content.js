@@ -1,212 +1,191 @@
+// All site content in Lithuanian
 export const content = {
-  lt: {
-    nav: {
-      portfolio: 'Darbai',
-      services: 'Paslaugos',
-      about: 'Apie',
-      testimonials: 'Atsiliepimai',
-      contact: 'Susisiekti',
-      book: 'Rezervuoti'
-    },
-    hero: {
-      title: 'Vaidilė Gudašiūtė',
-      subtitle: 'Studijinių portretų fotografė',
-      description: 'Aukštos kokybės nuotraukos, kurios pasakoja jūsų istoriją',
-      cta: 'Žiūrėti darbų'
-    },
-    portfolio: {
-      title: 'Mano darbai',
-      description: 'Rinktiniai studijiniai portretai',
-      filters: {
-        all: 'Visi',
-        professional: 'Versliniai',
-        personal: 'Asmeniniai',
-        families: 'Šeimos'
-      }
-    },
-    services: {
-      title: 'Paslaugos',
-      description: 'Profesionali fotografija, pritaikyta jūsų poreikiams',
-      studio: {
-        name: 'Studijiniai portretai',
-        description: 'Profesionali studija su tobula apšvietimu',
-        price: 'nuo 150€',
-        features: [
-          '1-2 valandų sesija',
-          '50+ apdorotų nuotraukų',
-          'Begalinė outfit variacijos',
-          'Profesionali retoušė',
-          'Nuotraukos per 5 darbo dienas'
-        ]
-      },
-      events: {
-        name: 'Įmonės renginiai',
-        description: 'Profesionalus renginių fotografavimas',
-        price: 'nuo 200€',
-        features: [
-          'Ilgaamžinis kontraktas',
-          '200+ nuotraukų',
-          'Profesionali redakcija',
-          'Online galerija',
-          'Nuotraukos per savaitę'
-        ]
-      },
-      weddings: {
-        name: 'Vestuves',
-        description: 'Jūsų ypatingąjį dieną užfiksuoti',
-        price: 'nuo 600€',
-        features: [
-          'Visa diena fotografavimas',
-          '400+ nuotraukų',
-          'Paruošimas + ceremonija + vakarėlis',
-          'Profesionali redakcija',
-          'Privati online galerija'
-        ]
-      }
-    },
-    about: {
-      title: 'Apie mane',
-      bio: 'Sveiki! Aš Vaidilė, profesionali fotografė iš Kauno. Mano specialybė – studijiniai portretai, kurie pagauna tikrą žmogaus esmę.',
-      mission: 'Mano misija yra sukurti nuotraukas, kurios ne tik gražios, bet ir autentiškos. Kiekviena sesija yra asmeninė ir pritaikyta jūsų poreikiams.',
-      values: [
-        { title: 'Profesionalumas', desc: 'Aukščiausia kokybė kiekviename detale' },
-        { title: 'Autentiškumas', desc: 'Tikros emocijos, o ne dirbtinės pozos' },
-        { title: 'Individualus prieitis', desc: 'Kiekvienas klient yra unikalus' }
-      ]
-    },
-    testimonials: {
-      title: 'Atsiliepimų',
-      reviews: [
-        { name: 'Laima V.', text: 'Vaidilė sukūrė nuotraukas, kurios man tiesiog nepatinka – jos man mylimu! Profesionali, šilta ir labai atidžiame kiekvienam detaliui.', rating: 5 },
-        { name: 'Andrius K.', text: 'Geriausios verslinės nuotraukos, kurias kada nors turėjau. Rekomendoju visiems!', rating: 5 },
-        { name: 'Rūta Š.', text: 'Studijoje jaučiausi visiškai laisvai. Vaidilė turi nepaprastą gebėjimą užfiksuoti natūralumo.', rating: 5 }
-      ]
-    },
-    contact: {
-      title: 'Susisiekime',
-      email: 'vaidile.gudasiute@gmail.com',
-      location: 'Kaunas, Lietuva',
-      availability: 'Šiuo metu priimamas užsakymus 2024-2025 m.',
-      form: {
-        name: 'Jūsų vardas',
-        email: 'El. paštas',
-        phone: 'Telefono numeris',
-        service: 'Paslauga',
-        message: 'Jūsų žinutė',
-        submit: 'Siųsti žinutę',
-        success: 'Ačiū! Susiliksiu su jumis netrukus.'
-      }
-    },
-    footer: {
-      tagline: 'Vaidilė Gudašiūtė • Fotografė • Kaunas',
-      followUs: 'Sekite mus',
-      instagram: '@gudasiute_photography',
-      rights: '© 2024 Vaidilė Gudašiūtė Photography. Visos teisės saugotos.'
-    }
+  brand: {
+    name: "Vaidilė",
+    tagline: "Fotografė · Kaunas",
+    instagram: "gudasiute_photography",
+    instagramUrl: "https://instagram.com/gudasiute_photography",
+    email: "vaidile.gudasiute@gmail.com",
+    phone: "+370 623 45 678",
+    location: "Kaunas, Lietuva",
   },
-  en: {
-    nav: {
-      portfolio: 'Portfolio',
-      services: 'Services',
-      about: 'About',
-      testimonials: 'Testimonials',
-      contact: 'Contact',
-      book: 'Book Now'
+
+  nav: {
+    portfolio: "Portfolio",
+    about: "Apie mane",
+    services: "Paslaugos",
+    testimonials: "Atsiliepimai",
+    contact: "Kontaktai",
+    cta: "Rezervuoti",
+  },
+
+  hero: {
+    eyebrow: "Fotografija · 2018 — 2026",
+    title: "Akimirkos,",
+    titleAccent: "kurios lieka amžinai.",
+    subtitle: "Portretai, vestuvės ir gimtadieniai — kiekvieną emociją įamžinu su meile ir jautrumu.",
+    ctaPrimary: "Žiūrėti portfolio",
+    ctaSecondary: "Susisiekti",
+    scrollHint: "Slinkite žemyn",
+  },
+
+  portfolio: {
+    eyebrow: "Portfolio",
+    title: "Mano darbai",
+    subtitle: "Kiekvienas kadras — istorija.",
+    filters: {
+      all: "Visi",
+      portraits: "Portretai",
+      weddings: "Vestuvės",
+      birthdays: "Gimtadieniai",
     },
-    hero: {
-      title: 'Vaidilė Gudašiūtė',
-      subtitle: 'Studio Portrait Photographer',
-      description: 'High-quality photography that tells your story',
-      cta: 'View Portfolio'
-    },
-    portfolio: {
-      title: 'My Work',
-      description: 'Selected studio portrait sessions',
-      filters: {
-        all: 'All',
-        professional: 'Professional',
-        personal: 'Personal',
-        families: 'Families'
-      }
-    },
-    services: {
-      title: 'Services',
-      description: 'Professional photography tailored to your needs',
-      studio: {
-        name: 'Studio Portraits',
-        description: 'Professional studio with perfect lighting',
-        price: 'from €150',
+    items: [
+      { id: 1, category: "portraits", title: "Portretas | Vasara" },
+      { id: 2, category: "weddings", title: "Vestuvės | Kaunas" },
+      { id: 3, category: "portraits", title: "Portretas | Studija" },
+      { id: 4, category: "birthdays", title: "Gimtadienis | Šeima" },
+      { id: 5, category: "weddings", title: "Vestuvės | Ceremonija" },
+      { id: 6, category: "portraits", title: "Portretas | Ruduo" },
+      { id: 7, category: "weddings", title: "Vestuvės | Šventė" },
+      { id: 8, category: "birthdays", title: "Gimtadienis | Vaikas" },
+      { id: 9, category: "portraits", title: "Portretas | Natūralus" },
+    ],
+    ctaText: "Daugiau darbų rasite Instagram",
+    ctaLink: "Sekite @gudasiute_photography",
+  },
+
+  about: {
+    eyebrow: "Apie mane",
+    title: "Sveiki, aš esu Vaidilė",
+    paragraphs: [
+      "Esu fotografė iš Kauno, kuri tiki, kad kiekviena akimirka verta būti įamžinta. Fotografija man — tai ne tik hobis, tai aistra ir gyvenimo būdas.",
+      "Specializuojuosi portretinėje fotografijoje, tačiau taip pat su meile fotografuoju vestuves ir gimtadienius. Man svarbiausia — natūralumas, autentiškos emocijos ir ta viena ypatinga akimirka, kuri pasakoja istoriją.",
+      "Dirbu su klientais individualiai, nes kiekvienas žmogus yra unikalus. Mano tikslas — kad jūs jaustumėtės patogiai prieš kamerą ir gautumėte nuotraukas, kurios džiugins visą gyvenimą.",
+    ],
+    stats: [
+      { number: "200+", label: "Fotosesijų" },
+      { number: "50+", label: "Vestuvių" },
+      { number: "8+", label: "Metų patirtis" },
+    ],
+    values: [
+      { title: "Profesionalumas", desc: "Aukštos kokybės įranga ir patirtis" },
+      { title: "Širdingumas", desc: "Kiekvienas kadras — su meile" },
+      { title: "Unikalumas", desc: "Jūsų istorija, jūsų stilius" },
+    ],
+  },
+
+  quote: {
+    text: "Fotografija — tai menas pagauti tai, kas praeis, ir padaryti tai amžina.",
+    author: "Vaidilė Gudašiūtė",
+  },
+
+  services: {
+    eyebrow: "Paslaugos",
+    title: "Ką siūlau",
+    subtitle: "Kiekvienam momentui — savas stilius.",
+    items: [
+      {
+        name: "Portretai",
+        duration: "1 val.",
+        price: "nuo 80€",
+        featured: false,
         features: [
-          '1-2 hour session',
-          '50+ edited photos',
-          'Unlimited outfit changes',
-          'Professional retouching',
-          'Photos in 5 business days'
-        ]
+          "1–2 valandų fotosesija",
+          "20+ apdorotų nuotraukų",
+          "Vieta pagal susitarimą",
+          "Galimybė keisti aprangą",
+          "Nuotraukos per 7 d. d.",
+        ],
       },
-      events: {
-        name: 'Corporate Events',
-        description: 'Professional event photography',
-        price: 'from €200',
+      {
+        name: "Vestuvės",
+        duration: "Visa diena",
+        price: "nuo 600€",
+        featured: true,
+        badge: "Populiariausia",
         features: [
-          'Full day coverage',
-          '200+ photos',
-          'Professional editing',
-          'Online gallery',
-          'Photos within a week'
-        ]
+          "Visa vestuvių diena",
+          "200+ apdorotų nuotraukų",
+          "Pasiruošimas + ceremonija + šventė",
+          "Nuotakos ir jaunikio portretai",
+          "Nuotraukos per 4 sav.",
+          "Privati galerija internete",
+        ],
       },
-      weddings: {
-        name: 'Weddings',
-        description: 'Capture your special day',
-        price: 'from €600',
+      {
+        name: "Gimtadieniai",
+        duration: "2 val.",
+        price: "nuo 120€",
+        featured: false,
         features: [
-          'Full day coverage',
-          '400+ photos',
-          'Preparation + ceremony + reception',
-          'Professional editing',
-          'Private online gallery'
-        ]
-      }
+          "2–3 valandų fotosesija",
+          "30+ apdorotų nuotraukų",
+          "Šventės vieta pagal susitarimą",
+          "Grupinės ir individualios nuotraukos",
+          "Nuotraukos per 10 d. d.",
+        ],
+      },
+    ],
+    note: "Kainos gali skirtis priklausomai nuo vietos, laiko ir papildomų pageidavimų.",
+  },
+
+  testimonials: {
+    eyebrow: "Atsiliepimai",
+    title: "Ką sako klientai",
+    items: [
+      {
+        name: "Laima V.",
+        role: "Nuotaka",
+        text: "Vaidilė yra fenomenali fotografė. Jos gebėjimas pagauti tikras emocijas — nepakartojamas. Mūsų vestuvių nuotraukos yra tobulos.",
+      },
+      {
+        name: "Andrius K.",
+        role: "Verslo klientas",
+        text: "Profesionalus požiūris ir puiki komunikacija. Rezultatai pranoko lūkesčius. Rekomenduoju iš širdies.",
+      },
+      {
+        name: "Rūta Š.",
+        role: "Portreto klientė",
+        text: "Jaučiausi labai patogiai per visą fotosesiją. Vaidilė sugebėjo išgauti tikrą mano charakterį. Ačiū!",
+      },
+      {
+        name: "Justas M.",
+        role: "Jaunikis",
+        text: "Vaidilės nuotraukos — tai ne tik vaizdas, o pilna istorija. Kiekvieną kartą žiūrint atgyja emocijos.",
+      },
+      {
+        name: "Ineta B.",
+        role: "Mama",
+        text: "Vaikų fotosesija buvo nuostabus patyrimas. Vaidilė turi ypatingą ryšį su vaikais. Nuotraukos — meno kūrinys.",
+      },
+      {
+        name: "Tomas R.",
+        role: "Gimtadienio klientas",
+        text: "Šventinės nuotraukos pranoko viską, ko tikėjausi. Kokybė, kompozicija, emocija — viskas.",
+      },
+    ],
+  },
+
+  contact: {
+    eyebrow: "Kontaktai",
+    title: "Susisiekime",
+    subtitle: "Papasakokite apie savo idėją — kartu sukursime kažką nuostabaus.",
+    availability: "Šiuo metu priimu užsakymus 2026 m. vasarai ir rudeniui.",
+    form: {
+      name: "Vardas",
+      email: "El. paštas",
+      phone: "Telefonas",
+      service: "Paslauga",
+      serviceOptions: ["Pasirinkite paslaugą", "Portretai", "Vestuvės", "Gimtadieniai", "Kita"],
+      message: "Žinutė",
+      messagePlaceholder: "Papasakokite apie savo fotosesiją — data, vieta, pageidavimai...",
+      submit: "Siųsti žinutę",
+      success: "Ačiū! Susisieksiu su jumis kuo greičiau.",
     },
-    about: {
-      title: 'About Me',
-      bio: 'Hello! I\'m Vaidilė, a professional photographer from Kaunas. My specialty is studio portraits that capture the true essence of people.',
-      mission: 'My mission is to create photos that are not just beautiful, but authentic. Every session is personal and tailored to your needs.',
-      values: [
-        { title: 'Professionalism', desc: 'Highest quality in every detail' },
-        { title: 'Authenticity', desc: 'Real emotions, not artificial poses' },
-        { title: 'Personal Touch', desc: 'Every client is unique' }
-      ]
-    },
-    testimonials: {
-      title: 'Testimonials',
-      reviews: [
-        { name: 'Laima V.', text: 'Vaidilė created photos that I absolutely love! Professional, warm, and attentive to every detail.', rating: 5 },
-        { name: 'Andrius K.', text: 'Best professional photos I\'ve ever had. I recommend her to everyone!', rating: 5 },
-        { name: 'Rūta Š.', text: 'I felt completely comfortable in the studio. Vaidilė has an amazing ability to capture authenticity.', rating: 5 }
-      ]
-    },
-    contact: {
-      title: 'Get in Touch',
-      email: 'vaidile.gudasiute@gmail.com',
-      location: 'Kaunas, Lithuania',
-      availability: 'Currently accepting bookings for 2024-2025',
-      form: {
-        name: 'Your Name',
-        email: 'Email',
-        phone: 'Phone',
-        service: 'Service',
-        message: 'Your Message',
-        submit: 'Send Message',
-        success: 'Thank you! I\'ll be in touch soon.'
-      }
-    },
-    footer: {
-      tagline: 'Vaidilė Gudašiūtė • Photographer • Kaunas',
-      followUs: 'Follow Us',
-      instagram: '@gudasiute_photography',
-      rights: '© 2024 Vaidilė Gudašiūtė Photography. All rights reserved.'
-    }
-  }
+  },
+
+  footer: {
+    tagline: "Fotografuoju su meile nuo 2018 m.",
+    rights: "Visos teisės saugotos.",
+  },
 };

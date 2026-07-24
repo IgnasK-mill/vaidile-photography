@@ -1,62 +1,89 @@
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown } from 'lucide-react'
+import { content } from '../content'
 
-export default function HeroSection({ t }) {
-  const scrollToPortfolio = () => {
-    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
-  };
+export default function HeroSection() {
+  const scrollTo = (id) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
-    <section className="pt-32 pb-16 md:pt-48 md:pb-24 bg-gradient-to-b from-cream via-ivory to-cream min-h-screen flex flex-col justify-center">
-      <div className="max-w-6xl mx-auto px-6 w-full">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Text Content */}
-          <div className="space-y-8">
-            <div className="space-y-3">
-              <div className="inline-block">
-                <div className="h-1 w-12 bg-blush rounded-full mb-4"></div>
-              </div>
-              <h1 className="text-5xl md:text-6xl font-display font-bold text-stone leading-tight">
-                {t.hero.title}
-              </h1>
-              <p className="text-xl text-sage font-display italic">{t.hero.subtitle}</p>
-            </div>
+    <section
+      id="hero"
+      className="relative min-h-screen w-full overflow-hidden flex items-center"
+    >
+      {/* Background image with slow zoom */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-br from-smoke via-night to-obsidian animate-slow-zoom" />
+        {/* Placeholder — replace with real image later */}
+        {/* When you add a real image, uncomment and use:
+        <img
+          src="/images/hero.jpg"
+          alt="Vaidilė Photography"
+          className="w-full h-full object-cover animate-slow-zoom"
+        />
+        */}
+      </div>
 
-            <p className="text-lg text-stone/80 max-w-lg leading-relaxed">
-              {t.hero.description}
+      {/* Multi-layer gradient overlays for cinematic depth */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-r from-obsidian/95 via-obsidian/60 to-obsidian/40" />
+      <div className="absolute inset-0 z-10 bg-gradient-to-t from-obsidian via-transparent to-obsidian/50" />
+
+      {/* Content */}
+      <div className="relative z-20 max-w-7xl mx-auto px-6 md:px-12 w-full">
+        <div className="max-w-3xl animate-fade-up">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-4 mb-8">
+            <span className="gold-rule" />
+            <p className="text-xs md:text-sm uppercase tracking-ultra-wide text-gold font-light">
+              {content.hero.eyebrow}
             </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button onClick={scrollToPortfolio} className="btn-primary">
-                {t.hero.cta}
-              </button>
-              <button className="btn-outline">
-                {t.nav.contact}
-              </button>
-            </div>
           </div>
 
-          {/* Featured Image */}
-          <div className="relative h-96 md:h-full rounded-lg overflow-hidden shadow-lg">
-            {/* Placeholder - in production, use a real image */}
-            <div className="w-full h-full bg-gradient-to-br from-warm via-blush to-stone/20 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-6xl mb-4">📸</div>
-                <p className="text-sm text-stone/60">Featured Portrait</p>
-              </div>
-            </div>
+          {/* Title */}
+          <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05] text-ivory mb-6">
+            {content.hero.title}
+            <br />
+            <span className="italic text-goldLight">{content.hero.titleAccent}</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-base md:text-lg text-pearl/80 font-light leading-relaxed max-w-xl mb-12">
+            {content.hero.subtitle}
+          </p>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button
+              onClick={() => scrollTo('portfolio')}
+              className="group bg-gold text-obsidian px-8 py-4 text-xs uppercase tracking-ultra-wide font-medium hover:bg-goldLight transition-all duration-500"
+            >
+              {content.hero.ctaPrimary}
+            </button>
+            <button
+              onClick={() => scrollTo('contact')}
+              className="border border-ivory/40 text-ivory px-8 py-4 text-xs uppercase tracking-ultra-wide font-light hover:border-gold hover:text-gold transition-all duration-500"
+            >
+              {content.hero.ctaSecondary}
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="mt-12 md:mt-20 flex justify-center animate-bounce">
-        <button
-          onClick={scrollToPortfolio}
-          className="p-3 hover:bg-warm rounded-full transition-colors"
-        >
-          <ChevronDown className="text-sage" size={24} />
-        </button>
+      {/* Vertical decorative label — right edge */}
+      <div className="hidden lg:block absolute right-10 top-1/2 -translate-y-1/2 z-20">
+        <p className="vertical-text text-xs uppercase text-mist font-light">
+          @{content.brand.instagram}
+        </p>
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 animate-gentle-pulse">
+        <p className="text-[10px] uppercase tracking-mega-wide text-mist font-light">
+          {content.hero.scrollHint}
+        </p>
+        <ChevronDown className="text-gold" size={20} />
       </div>
     </section>
-  );
+  )
 }

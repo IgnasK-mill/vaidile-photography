@@ -1,58 +1,57 @@
-import { useState } from 'react';
-import { Instagram } from 'lucide-react';
+import { useState } from 'react'
+import { Instagram, ArrowUpRight } from 'lucide-react'
+import { content } from '../content'
 
-const portfolioItems = [
-  { id: 1, category: 'professional', title: 'Portrait Session', color: 'bg-gradient-to-br from-warm to-blush' },
-  { id: 2, category: 'personal', title: 'Personal Session', color: 'bg-gradient-to-br from-blush to-warm' },
-  { id: 3, category: 'families', title: 'Family Portrait', color: 'bg-gradient-to-br from-stone/10 to-sage/20' },
-  { id: 4, category: 'professional', title: 'Corporate Headshot', color: 'bg-gradient-to-br from-sage/30 to-stone/10' },
-  { id: 5, category: 'personal', title: 'Lifestyle Shot', color: 'bg-gradient-to-br from-warm via-blush to-cream' },
-  { id: 6, category: 'families', title: 'Group Photo', color: 'bg-gradient-to-br from-blush/50 to-warm/50' },
-  { id: 7, category: 'professional', title: 'Business Portrait', color: 'bg-gradient-to-br from-stone/5 to-sage/15' },
-  { id: 8, category: 'personal', title: 'Creative Session', color: 'bg-gradient-to-br from-warm/60 to-blush/60' },
-  { id: 9, category: 'families', title: 'Children Portrait', color: 'bg-gradient-to-br from-cream to-warm' },
-];
-
-export default function PortfolioSection({ t }) {
-  const [filter, setFilter] = useState('all');
+export default function PortfolioSection() {
+  const [filter, setFilter] = useState('all')
 
   const filters = [
-    { value: 'all', label: t.portfolio.filters.all },
-    { value: 'professional', label: t.portfolio.filters.professional },
-    { value: 'personal', label: t.portfolio.filters.personal },
-    { value: 'families', label: t.portfolio.filters.families },
-  ];
+    { key: 'all', label: content.portfolio.filters.all },
+    { key: 'portraits', label: content.portfolio.filters.portraits },
+    { key: 'weddings', label: content.portfolio.filters.weddings },
+    { key: 'birthdays', label: content.portfolio.filters.birthdays },
+  ]
 
-  const filteredItems = filter === 'all' 
-    ? portfolioItems 
-    : portfolioItems.filter(item => item.category === filter);
+  const items = filter === 'all'
+    ? content.portfolio.items
+    : content.portfolio.items.filter((i) => i.category === filter)
+
+  // Placeholder gradients for each category (until real images are added)
+  const gradientFor = (cat) => {
+    if (cat === 'portraits') return 'from-smoke via-night to-obsidian'
+    if (cat === 'weddings') return 'from-night via-smoke to-ash/60'
+    return 'from-ash/40 via-smoke to-night'
+  }
 
   return (
-    <section id="portfolio" className="section-container bg-white">
-      <div className="space-y-8">
-        {/* Header */}
-        <div className="text-center space-y-3">
-          <div className="flex justify-center">
-            <div className="gold-divider"></div>
+    <section id="portfolio" className="relative py-24 md:py-32 bg-obsidian">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        {/* Section header */}
+        <div className="reveal max-w-2xl mb-16 md:mb-20">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="gold-rule" />
+            <p className="text-xs uppercase tracking-ultra-wide text-gold font-light">
+              {content.portfolio.eyebrow}
+            </p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-display text-stone">
-            {t.portfolio.title}
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory mb-4">
+            {content.portfolio.title}
           </h2>
-          <p className="text-lg text-stone/70 max-w-2xl mx-auto">
-            {t.portfolio.description}
+          <p className="text-pearl/70 font-light text-lg italic">
+            {content.portfolio.subtitle}
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3">
+        {/* Filter buttons */}
+        <div className="reveal flex flex-wrap gap-3 md:gap-6 mb-12 md:mb-16">
           {filters.map((f) => (
             <button
-              key={f.value}
-              onClick={() => setFilter(f.value)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
-                filter === f.value
-                  ? 'bg-stone text-cream'
-                  : 'border border-stone text-stone hover:bg-warm'
+              key={f.key}
+              onClick={() => setFilter(f.key)}
+              className={`text-xs uppercase tracking-ultra-wide px-5 py-3 font-light transition-all duration-500 ${
+                filter === f.key
+                  ? 'text-gold border-b border-gold'
+                  : 'text-mist hover:text-pearl border-b border-transparent'
               }`}
             >
               {f.label}
@@ -60,23 +59,28 @@ export default function PortfolioSection({ t }) {
           ))}
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
-          {filteredItems.map((item, index) => (
+        {/* Gallery grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          {items.map((item, idx) => (
             <div
               key={item.id}
-              className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow h-80 animate-fade-in-up"
-              style={{ animationDelay: `${index * 50}ms` }}
+              className={`gallery-item reveal aspect-[3/4] bg-gradient-to-br ${gradientFor(item.category)}`}
+              style={{ transitionDelay: `${(idx % 3) * 100}ms` }}
             >
-              <div className={`w-full h-full ${item.color} flex items-center justify-center`}>
-                <p className="text-center text-stone/40 font-display text-lg">{item.title}</p>
+              {/* Placeholder — when adding real images, replace with:
+              <img src={`/images/portfolio-${item.id}.jpg`} alt={item.title} className="w-full h-full object-cover" />
+              */}
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-6xl font-display text-goldDim/30 italic">
+                  {item.id}
+                </span>
               </div>
-
-              {/* Hover Overlay */}
-              <div className="absolute inset-0 bg-stone/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <div className="text-center">
-                  <p className="text-cream font-display text-lg">{item.title}</p>
-                  <p className="text-cream/70 text-sm mt-2">Professional Studio</p>
+              <div className="gallery-overlay">
+                <div>
+                  <p className="text-[10px] uppercase tracking-ultra-wide text-gold mb-2 font-light">
+                    {content.portfolio.filters[item.category] || item.category}
+                  </p>
+                  <p className="font-display text-xl text-ivory">{item.title}</p>
                 </div>
               </div>
             </div>
@@ -84,21 +88,22 @@ export default function PortfolioSection({ t }) {
         </div>
 
         {/* Instagram CTA */}
-        <div className="text-center pt-8 space-y-4">
-          <p className="text-stone/70">
-            Daugiau darbų rasite mūsų Instagram profilyje
-          </p>
+        <div className="reveal mt-16 md:mt-20 text-center">
+          <p className="text-mist font-light italic mb-6">{content.portfolio.ctaText}</p>
           <a
-            href="https://instagram.com/gudasiute_photography"
+            href={content.brand.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 btn-primary"
+            className="inline-flex items-center gap-3 text-gold hover:text-goldLight transition-colors duration-500 group"
           >
-            <Instagram size={20} />
-            @gudasiute_photography
+            <Instagram size={18} />
+            <span className="uppercase tracking-ultra-wide text-sm font-light">
+              {content.portfolio.ctaLink}
+            </span>
+            <ArrowUpRight size={16} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-500" />
           </a>
         </div>
       </div>
     </section>
-  );
+  )
 }

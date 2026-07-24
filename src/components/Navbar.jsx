@@ -1,122 +1,99 @@
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
+import { content } from '../content'
 
-export default function Navbar({ language, setLanguage, t }) {
-  const [isOpen, setIsOpen] = useState(false);
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
-  const scrollToSection = (id) => {
-    setIsOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollTo = (id) => {
+    setMobileOpen(false)
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
+
+  const links = [
+    { id: 'portfolio', label: content.nav.portfolio },
+    { id: 'about', label: content.nav.about },
+    { id: 'services', label: content.nav.services },
+    { id: 'testimonials', label: content.nav.testimonials },
+    { id: 'contact', label: content.nav.contact },
+  ]
 
   return (
-    <nav className="fixed top-0 w-full bg-cream/95 backdrop-blur-sm z-50 border-b border-blush">
-      <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center gap-2">
-          <h1 className="text-2xl font-display font-bold text-stone">VG</h1>
-          <div className="text-xs font-body">
-            <p className="font-semibold text-stone">Vaidilė</p>
-            <p className="text-sage text-xs">Fotografė</p>
-          </div>
-        </div>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
+        scrolled
+          ? 'bg-obsidian/95 backdrop-blur-sm py-4 border-b border-ash/40'
+          : 'bg-transparent py-6'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
+        {/* Brand */}
+        <button
+          onClick={() => scrollTo('hero')}
+          className="font-display text-2xl md:text-3xl text-ivory tracking-wide hover:text-gold transition-colors duration-500"
+        >
+          Vaidilė<span className="text-gold">.</span>
+        </button>
 
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center gap-8">
-          <button onClick={() => scrollToSection('portfolio')} className="text-sm font-medium text-stone hover:text-sage transition-colors">
-            {t.nav.portfolio}
-          </button>
-          <button onClick={() => scrollToSection('services')} className="text-sm font-medium text-stone hover:text-sage transition-colors">
-            {t.nav.services}
-          </button>
-          <button onClick={() => scrollToSection('about')} className="text-sm font-medium text-stone hover:text-sage transition-colors">
-            {t.nav.about}
-          </button>
-          <button onClick={() => scrollToSection('testimonials')} className="text-sm font-medium text-stone hover:text-sage transition-colors">
-            {t.nav.testimonials}
-          </button>
-          <button onClick={() => scrollToSection('contact')} className="text-sm font-medium text-stone hover:text-sage transition-colors">
-            {t.nav.contact}
-          </button>
-
-          {/* Language Toggle */}
-          <div className="flex gap-2 ml-4 pl-4 border-l border-blush">
+        {/* Desktop links */}
+        <div className="hidden lg:flex items-center gap-10">
+          {links.map((link) => (
             <button
-              onClick={() => setLanguage('lt')}
-              className={`text-xs font-semibold px-3 py-1 rounded-sm transition-colors ${
-                language === 'lt' ? 'bg-stone text-cream' : 'text-stone hover:bg-warm'
-              }`}
+              key={link.id}
+              onClick={() => scrollTo(link.id)}
+              className="text-sm uppercase tracking-ultra-wide text-pearl hover:text-gold transition-colors duration-500 font-light"
             >
-              LT
+              {link.label}
             </button>
-            <button
-              onClick={() => setLanguage('en')}
-              className={`text-xs font-semibold px-3 py-1 rounded-sm transition-colors ${
-                language === 'en' ? 'bg-stone text-cream' : 'text-stone hover:bg-warm'
-              }`}
-            >
-              EN
-            </button>
-          </div>
-
-          <button className="btn-primary text-sm">
-            {t.nav.book}
+          ))}
+          <button
+            onClick={() => scrollTo('contact')}
+            className="text-sm uppercase tracking-ultra-wide border border-gold text-gold hover:bg-gold hover:text-obsidian px-6 py-3 transition-all duration-500 font-light"
+          >
+            {content.nav.cta}
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        {/* Mobile toggle */}
+        <button
+          onClick={() => setMobileOpen(!mobileOpen)}
+          className="lg:hidden text-ivory hover:text-gold transition-colors"
+          aria-label="Menu"
+        >
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-warm border-t border-blush">
-          <div className="px-6 py-4 space-y-4">
-            <button onClick={() => scrollToSection('portfolio')} className="block w-full text-left text-sm font-medium text-stone hover:text-sage">
-              {t.nav.portfolio}
-            </button>
-            <button onClick={() => scrollToSection('services')} className="block w-full text-left text-sm font-medium text-stone hover:text-sage">
-              {t.nav.services}
-            </button>
-            <button onClick={() => scrollToSection('about')} className="block w-full text-left text-sm font-medium text-stone hover:text-sage">
-              {t.nav.about}
-            </button>
-            <button onClick={() => scrollToSection('testimonials')} className="block w-full text-left text-sm font-medium text-stone hover:text-sage">
-              {t.nav.testimonials}
-            </button>
-            <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-sm font-medium text-stone hover:text-sage">
-              {t.nav.contact}
-            </button>
-
-            <div className="flex gap-2 py-4 border-t border-blush">
+      {/* Mobile menu */}
+      {mobileOpen && (
+        <div className="lg:hidden bg-obsidian/98 backdrop-blur-md border-t border-ash/40 animate-fade-in">
+          <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col gap-6">
+            {links.map((link) => (
               <button
-                onClick={() => setLanguage('lt')}
-                className={`flex-1 text-xs font-semibold px-3 py-2 rounded-sm transition-colors ${
-                  language === 'lt' ? 'bg-stone text-cream' : 'text-stone hover:bg-blush'
-                }`}
+                key={link.id}
+                onClick={() => scrollTo(link.id)}
+                className="text-left text-sm uppercase tracking-ultra-wide text-pearl hover:text-gold transition-colors font-light"
               >
-                Lietuvių
+                {link.label}
               </button>
-              <button
-                onClick={() => setLanguage('en')}
-                className={`flex-1 text-xs font-semibold px-3 py-2 rounded-sm transition-colors ${
-                  language === 'en' ? 'bg-stone text-cream' : 'text-stone hover:bg-blush'
-                }`}
-              >
-                English
-              </button>
-            </div>
-
-            <button className="w-full btn-primary text-sm">
-              {t.nav.book}
+            ))}
+            <button
+              onClick={() => scrollTo('contact')}
+              className="text-sm uppercase tracking-ultra-wide border border-gold text-gold hover:bg-gold hover:text-obsidian px-6 py-3 transition-all duration-500 font-light text-center mt-4"
+            >
+              {content.nav.cta}
             </button>
           </div>
         </div>
       )}
     </nav>
-  );
+  )
 }

@@ -1,214 +1,188 @@
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Instagram } from 'lucide-react';
+import { useState } from 'react'
+import { Mail, Phone, MapPin, Instagram, Send } from 'lucide-react'
+import { content } from '../content'
 
-export default function ContactSection({ t }) {
-  const [formData, setFormData] = useState({
+export default function ContactSection() {
+  const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
-    service: 'studio',
-    message: ''
-  });
-  const [submitted, setSubmitted] = useState(false);
+    service: content.contact.form.serviceOptions[0],
+    message: '',
+  })
+  const [submitted, setSubmitted] = useState(false)
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    // For now, just show success message
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', phone: '', service: 'studio', message: '' });
-    }, 3000);
-  };
+    e.preventDefault()
+    setSubmitted(true)
+    setTimeout(() => setSubmitted(false), 5000)
+    setForm({
+      name: '',
+      email: '',
+      phone: '',
+      service: content.contact.form.serviceOptions[0],
+      message: '',
+    })
+  }
+
+  const inputClass = "w-full bg-transparent border-b border-ash/60 py-3 text-ivory placeholder-mist/50 font-light focus:border-gold focus:outline-none transition-colors duration-500 text-sm"
 
   return (
-    <section id="contact" className="section-container bg-white">
-      <div className="space-y-12">
-        {/* Header */}
-        <div className="text-center space-y-3">
-          <div className="flex justify-center">
-            <div className="gold-divider"></div>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-display text-stone">
-            {t.contact.title}
-          </h2>
-        </div>
-
-        <div className="grid md:grid-cols-2 gap-12 mt-12">
-          {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <p className="text-lg font-display text-stone mb-4">
-                Jei turite klausimų, prašau susisiekite su manimi
-              </p>
-              <p className="text-stone/70">
-                {t.contact.availability}
+    <section id="contact" className="relative py-24 md:py-32 bg-obsidian">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24">
+          {/* Left: Info */}
+          <div className="reveal">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="gold-rule" />
+              <p className="text-xs uppercase tracking-ultra-wide text-gold font-light">
+                {content.contact.eyebrow}
               </p>
             </div>
 
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-ivory mb-6 leading-tight">
+              {content.contact.title}
+            </h2>
+
+            <p className="text-pearl/70 font-light text-lg leading-relaxed mb-12 italic">
+              {content.contact.subtitle}
+            </p>
+
+            {/* Availability badge */}
+            <div className="inline-block bg-night border border-gold/30 px-5 py-3 mb-12">
+              <p className="text-xs text-gold font-light">
+                {content.contact.availability}
+              </p>
+            </div>
+
+            {/* Contact info */}
             <div className="space-y-6">
-              {/* Email */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 pt-1">
-                  <Mail className="text-sage" size={24} />
-                </div>
-                <div>
-                  <p className="font-semibold text-stone">El. paštas</p>
-                  <a href={`mailto:${t.contact.email}`} className="text-sage hover:text-stone transition-colors">
-                    {t.contact.email}
-                  </a>
-                </div>
+              <a href={`mailto:${content.brand.email}`} className="flex items-center gap-4 text-pearl hover:text-gold transition-colors duration-500 group">
+                <Mail size={18} className="text-gold" />
+                <span className="font-light">{content.brand.email}</span>
+              </a>
+
+              <a href={`tel:${content.brand.phone.replace(/\s/g, '')}`} className="flex items-center gap-4 text-pearl hover:text-gold transition-colors duration-500">
+                <Phone size={18} className="text-gold" />
+                <span className="font-light">{content.brand.phone}</span>
+              </a>
+
+              <div className="flex items-center gap-4 text-pearl">
+                <MapPin size={18} className="text-gold" />
+                <span className="font-light">{content.brand.location}</span>
               </div>
 
-              {/* Phone */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 pt-1">
-                  <Phone className="text-sage" size={24} />
-                </div>
-                <div>
-                  <p className="font-semibold text-stone">Telefono numeris</p>
-                  <a href="tel:+37062345678" className="text-sage hover:text-stone transition-colors">
-                    +370 623 45 678
-                  </a>
-                </div>
-              </div>
-
-              {/* Location */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 pt-1">
-                  <MapPin className="text-sage" size={24} />
-                </div>
-                <div>
-                  <p className="font-semibold text-stone">Vieta</p>
-                  <p className="text-stone/70">
-                    {t.contact.location}
-                  </p>
-                </div>
-              </div>
-
-              {/* Instagram */}
-              <div className="flex gap-4">
-                <div className="flex-shrink-0 pt-1">
-                  <Instagram className="text-sage" size={24} />
-                </div>
-                <div>
-                  <p className="font-semibold text-stone">Instagram</p>
-                  <a 
-                    href="https://instagram.com/gudasiute_photography" 
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sage hover:text-stone transition-colors"
-                  >
-                    @gudasiute_photography
-                  </a>
-                </div>
-              </div>
+              <a
+                href={content.brand.instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 text-pearl hover:text-gold transition-colors duration-500"
+              >
+                <Instagram size={18} className="text-gold" />
+                <span className="font-light">@{content.brand.instagram}</span>
+              </a>
             </div>
           </div>
 
-          {/* Contact Form */}
-          <div className="bg-ivory rounded-lg p-8">
-            {submitted ? (
-              <div className="text-center py-12">
-                <p className="text-3xl mb-4">✓</p>
-                <p className="text-lg font-display text-stone mb-2">Ačiū!</p>
-                <p className="text-stone/70">
-                  {t.contact.form.success}
-                </p>
+          {/* Right: Form */}
+          <div className="reveal">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <div>
+                <label className="text-[10px] uppercase tracking-ultra-wide text-gold font-light">
+                  {content.contact.form.name} *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className={inputClass}
+                />
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label className="block text-sm font-semibold text-stone mb-2">
-                    {t.contact.form.name}
-                  </label>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-blush rounded-sm focus:outline-none focus:ring-2 focus:ring-sage/50 bg-white"
-                    placeholder="Jūsų vardas"
-                  />
-                </div>
 
+              <div className="grid sm:grid-cols-2 gap-8">
                 <div>
-                  <label className="block text-sm font-semibold text-stone mb-2">
-                    {t.contact.form.email}
+                  <label className="text-[10px] uppercase tracking-ultra-wide text-gold font-light">
+                    {content.contact.form.email} *
                   </label>
                   <input
                     type="email"
                     name="email"
-                    value={formData.email}
+                    value={form.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-blush rounded-sm focus:outline-none focus:ring-2 focus:ring-sage/50 bg-white"
-                    placeholder="el@paštas.lt"
+                    className={inputClass}
                   />
                 </div>
-
                 <div>
-                  <label className="block text-sm font-semibold text-stone mb-2">
-                    {t.contact.form.phone}
+                  <label className="text-[10px] uppercase tracking-ultra-wide text-gold font-light">
+                    {content.contact.form.phone}
                   </label>
                   <input
                     type="tel"
                     name="phone"
-                    value={formData.phone}
+                    value={form.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-blush rounded-sm focus:outline-none focus:ring-2 focus:ring-sage/50 bg-white"
-                    placeholder="+370 623 45 678"
+                    className={inputClass}
                   />
                 </div>
+              </div>
 
-                <div>
-                  <label className="block text-sm font-semibold text-stone mb-2">
-                    {t.contact.form.service}
-                  </label>
-                  <select
-                    name="service"
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-blush rounded-sm focus:outline-none focus:ring-2 focus:ring-sage/50 bg-white"
-                  >
-                    <option value="studio">Studijiniai portretai</option>
-                    <option value="events">Įmonės renginiai</option>
-                    <option value="weddings">Vestuves</option>
-                  </select>
+              <div>
+                <label className="text-[10px] uppercase tracking-ultra-wide text-gold font-light">
+                  {content.contact.form.service}
+                </label>
+                <select
+                  name="service"
+                  value={form.service}
+                  onChange={handleChange}
+                  className={`${inputClass} bg-obsidian`}
+                >
+                  {content.contact.form.serviceOptions.map((opt) => (
+                    <option key={opt} value={opt} className="bg-obsidian">
+                      {opt}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="text-[10px] uppercase tracking-ultra-wide text-gold font-light">
+                  {content.contact.form.message} *
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  placeholder={content.contact.form.messagePlaceholder}
+                  className={`${inputClass} resize-none`}
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="group inline-flex items-center gap-4 bg-gold text-obsidian px-8 py-4 text-xs uppercase tracking-ultra-wide font-medium hover:bg-goldLight transition-all duration-500"
+              >
+                {content.contact.form.submit}
+                <Send size={14} className="group-hover:translate-x-1 transition-transform duration-500" />
+              </button>
+
+              {submitted && (
+                <div className="animate-fade-in border border-gold/40 bg-gold/5 p-4 text-sm text-gold font-light">
+                  {content.contact.form.success}
                 </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-stone mb-2">
-                    {t.contact.form.message}
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="4"
-                    className="w-full px-4 py-3 border border-blush rounded-sm focus:outline-none focus:ring-2 focus:ring-sage/50 bg-white"
-                    placeholder="Papasakokite apie savo fotografijos poreikius..."
-                  ></textarea>
-                </div>
-
-                <button type="submit" className="w-full btn-primary">
-                  {t.contact.form.submit}
-                </button>
-              </form>
-            )}
+              )}
+            </form>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

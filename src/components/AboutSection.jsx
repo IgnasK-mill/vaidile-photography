@@ -1,68 +1,96 @@
-export default function AboutSection({ t }) {
+import { Instagram } from 'lucide-react'
+import { content } from '../content'
+
+export default function AboutSection() {
   return (
-    <section id="about" className="section-container bg-white">
-      <div className="grid md:grid-cols-2 gap-12 items-center">
-        {/* Image */}
-        <div className="rounded-lg overflow-hidden shadow-lg h-96 md:h-full">
-          <div className="w-full h-full bg-gradient-to-br from-blush via-warm to-cream flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-8xl mb-4">👤</div>
-              <p className="text-sm text-stone/60">Vaidilė Gudašiūtė</p>
+    <section id="about" className="relative py-24 md:py-32 bg-night overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left: Image */}
+          <div className="reveal relative">
+            <div className="relative aspect-[3/4] max-w-md mx-auto lg:mx-0 bg-gradient-to-br from-smoke via-night to-obsidian overflow-hidden">
+              {/* Placeholder — when adding real image:
+              <img src="/images/about.jpg" alt="Vaidilė Gudašiūtė" className="w-full h-full object-cover object-top" />
+              */}
+              <div className="w-full h-full flex items-center justify-center">
+                <span className="text-9xl font-display italic text-goldDim/30">V</span>
+              </div>
+            </div>
+
+            {/* Floating stats card */}
+            <div className="hidden md:block absolute -bottom-8 -right-8 bg-obsidian border border-ash/60 p-8 max-w-xs">
+              <div className="space-y-6">
+                {content.about.stats.map((stat) => (
+                  <div key={stat.label}>
+                    <p className="font-display text-3xl text-gold mb-1">{stat.number}</p>
+                    <p className="text-[10px] uppercase tracking-ultra-wide text-mist font-light">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Content */}
-        <div className="space-y-8">
-          <div className="space-y-3">
-            <div className="gold-divider"></div>
-            <h2 className="text-4xl font-display text-stone">{t.about.title}</h2>
-          </div>
+          {/* Right: Content */}
+          <div className="reveal">
+            <div className="flex items-center gap-4 mb-6">
+              <span className="gold-rule" />
+              <p className="text-xs uppercase tracking-ultra-wide text-gold font-light">
+                {content.about.eyebrow}
+              </p>
+            </div>
 
-          <p className="text-lg text-stone/80 leading-relaxed">
-            {t.about.bio}
-          </p>
+            <h2 className="font-display text-4xl md:text-5xl text-ivory mb-8 leading-tight">
+              {content.about.title}
+            </h2>
 
-          <p className="text-lg text-stone/80 leading-relaxed">
-            {t.about.mission}
-          </p>
+            <div className="space-y-5 text-pearl/80 font-light leading-relaxed mb-10">
+              {content.about.paragraphs.map((p, idx) => (
+                <p key={idx}>{p}</p>
+              ))}
+            </div>
 
-          {/* Values */}
-          <div className="space-y-6 pt-4">
-            {t.about.values.map((value, index) => (
-              <div key={index} className="flex gap-4">
-                <div className="flex-shrink-0">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-blush/20 text-sage">
-                    {index === 0 && '✓'}
-                    {index === 1 && '♥'}
-                    {index === 2 && '★'}
+            {/* Mobile stats */}
+            <div className="grid grid-cols-3 gap-4 md:hidden mb-10 py-6 border-y border-ash/40">
+              {content.about.stats.map((stat) => (
+                <div key={stat.label} className="text-center">
+                  <p className="font-display text-2xl text-gold mb-1">{stat.number}</p>
+                  <p className="text-[9px] uppercase tracking-ultra-wide text-mist font-light">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Values */}
+            <div className="space-y-5 mb-10">
+              {content.about.values.map((v) => (
+                <div key={v.title} className="flex gap-4">
+                  <span className="gold-rule mt-3 shrink-0" />
+                  <div>
+                    <p className="font-display text-lg text-ivory mb-1">{v.title}</p>
+                    <p className="text-sm text-mist font-light">{v.desc}</p>
                   </div>
                 </div>
-                <div>
-                  <h3 className="text-lg font-display font-bold text-stone">{value.title}</h3>
-                  <p className="text-stone/70 text-sm mt-1">{value.desc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-4 pt-8 border-t border-blush">
-            <div className="text-center">
-              <p className="text-3xl font-bold text-sage">200+</p>
-              <p className="text-xs text-stone/70 uppercase tracking-wide">Sesijos</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-sage">8+</p>
-              <p className="text-xs text-stone/70 uppercase tracking-wide">Metų</p>
-            </div>
-            <div className="text-center">
-              <p className="text-3xl font-bold text-sage">🏆</p>
-              <p className="text-xs text-stone/70 uppercase tracking-wide">Apie</p>
-            </div>
+            {/* Instagram link */}
+            <a
+              href={content.brand.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 text-gold hover:text-goldLight transition-colors duration-500"
+            >
+              <Instagram size={16} />
+              <span className="uppercase tracking-ultra-wide text-xs font-light">
+                @{content.brand.instagram}
+              </span>
+            </a>
           </div>
         </div>
       </div>
     </section>
-  );
+  )
 }

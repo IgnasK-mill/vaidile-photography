@@ -1,90 +1,87 @@
-import { Instagram, Facebook, MapPin } from 'lucide-react';
+import { Instagram, Mail } from 'lucide-react'
+import { content } from '../content'
 
-export default function Footer({ t }) {
-  const currentYear = new Date().getFullYear();
+export default function Footer() {
+  const year = new Date().getFullYear()
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id)
+    if (el) el.scrollIntoView({ behavior: 'smooth' })
+  }
 
   return (
-    <footer className="bg-stone text-cream">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid md:grid-cols-4 gap-12 mb-12">
+    <footer className="relative bg-obsidian border-t border-ash/30 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid md:grid-cols-3 gap-12 mb-12">
           {/* Brand */}
-          <div className="space-y-4">
-            <div>
-              <h3 className="text-2xl font-display font-bold">VG</h3>
-              <p className="text-cream/70 text-sm">Fotografė • Kaunas</p>
-            </div>
-            <p className="text-cream/70 text-sm leading-relaxed">
-              Profesionali studijinių portretų fotografė, sukurianti autentiškas ir gražias nuotraukas.
+          <div>
+            <p className="font-display text-3xl text-ivory mb-3">
+              Vaidilė<span className="text-gold">.</span>
+            </p>
+            <p className="text-xs uppercase tracking-ultra-wide text-mist font-light mb-4">
+              {content.brand.tagline}
+            </p>
+            <p className="text-sm text-mist italic font-light">
+              {content.footer.tagline}
             </p>
           </div>
 
-          {/* Quick Links */}
+          {/* Links */}
           <div>
-            <h4 className="font-semibold text-cream mb-4">Nuorodas</h4>
-            <ul className="space-y-2 text-sm text-cream/70">
-              <li><a href="#portfolio" className="hover:text-cream transition-colors">Darbai</a></li>
-              <li><a href="#services" className="hover:text-cream transition-colors">Paslaugos</a></li>
-              <li><a href="#about" className="hover:text-cream transition-colors">Apie</a></li>
-              <li><a href="#contact" className="hover:text-cream transition-colors">Susisiekti</a></li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold text-cream mb-4">Kontaktai</h4>
-            <ul className="space-y-3 text-sm text-cream/70">
-              <li>
-                <a href="mailto:vaidile.gudasiute@gmail.com" className="hover:text-cream transition-colors">
-                  vaidile.gudasiute@gmail.com
-                </a>
-              </li>
-              <li>
-                <a href="tel:+37062345678" className="hover:text-cream transition-colors">
-                  +370 623 45 678
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <MapPin size={16} />
-                <span>Kaunas, Lietuva</span>
-              </li>
-            </ul>
+            <p className="text-xs uppercase tracking-ultra-wide text-gold font-light mb-6">
+              Navigacija
+            </p>
+            <div className="flex flex-col gap-3">
+              {['portfolio', 'about', 'services', 'testimonials', 'contact'].map((id) => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className="text-sm text-pearl hover:text-gold transition-colors duration-500 text-left font-light"
+                >
+                  {content.nav[id]}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Social */}
           <div>
-            <h4 className="font-semibold text-cream mb-4">{t.footer.followUs}</h4>
-            <div className="flex gap-4">
+            <p className="text-xs uppercase tracking-ultra-wide text-gold font-light mb-6">
+              Sekite
+            </p>
+            <div className="flex flex-col gap-4">
               <a
-                href="https://instagram.com/gudasiute_photography"
+                href={content.brand.instagramUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-cream/10 rounded-full hover:bg-cream/20 transition-colors"
+                className="flex items-center gap-3 text-pearl hover:text-gold transition-colors duration-500"
               >
-                <Instagram size={20} />
+                <Instagram size={16} />
+                <span className="text-sm font-light">@{content.brand.instagram}</span>
               </a>
               <a
-                href="https://facebook.com/gudasiute.photography"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-cream/10 rounded-full hover:bg-cream/20 transition-colors"
+                href={`mailto:${content.brand.email}`}
+                className="flex items-center gap-3 text-pearl hover:text-gold transition-colors duration-500"
               >
-                <Facebook size={20} />
+                <Mail size={16} />
+                <span className="text-sm font-light">{content.brand.email}</span>
               </a>
             </div>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-cream/20 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center text-sm text-cream/70">
-            <p>© {currentYear} Vaidilė Gudašiūtė Photography. Visos teisės saugotos.</p>
-            <div className="flex gap-6 mt-4 md:mt-0">
-              <a href="#" className="hover:text-cream transition-colors">Privatumas</a>
-              <a href="#" className="hover:text-cream transition-colors">Sąlygos</a>
-            </div>
-          </div>
+        {/* Gold divider */}
+        <div className="flex justify-center mb-8">
+          <span className="gold-rule" />
+        </div>
+
+        {/* Copyright */}
+        <div className="text-center">
+          <p className="text-xs text-mist font-light">
+            © {year} Vaidilė Gudašiūtė Photography. {content.footer.rights}
+          </p>
         </div>
       </div>
     </footer>
-  );
+  )
 }
