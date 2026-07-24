@@ -57,11 +57,11 @@ export const content = {
   about: {
     eyebrow: "Apie mane",
     title: "Sveiki, aš esu Vaidilė",
-    paragraphs: [
-      "Esu fotografė iš Kauno, kuri tiki, kad kiekviena akimirka verta būti įamžinta. Fotografija man — tai ne tik hobis, tai aistra ir gyvenimo būdas.",
-      "Specializuojuosi portretinėje fotografijoje, tačiau taip pat su meile fotografuoju vestuves ir gimtadienius. Man svarbiausia — natūralumas, autentiškos emocijos ir ta viena ypatinga akimirka, kuri pasakoja istoriją.",
-      "Dirbu su klientais individualiai, nes kiekvienas žmogus yra unikalus. Mano tikslas — kad jūs jaustumėtės patogiai prieš kamerą ir gautumėte nuotraukas, kurios džiugins visą gyvenimą.",
-    ],
+   paragraphs: [
+  "Fotografija man yra daugiau nei profesija – tai tai, ką nuoširdžiai myliu. Mane įkvepia žmonės, jų emocijos, ryšiai ir unikalios istorijos, kurias galiu perteikti nuotraukose.",
+  "Nuolat mokausi ir tobulinu savo žinias įvairiuose seminaruose bei mokymuose, nes tikiu, kad augimas ir smalsumas leidžia kurti dar geriau. Man svarbu ne tik gražūs kadrai, bet ir tikros emocijos, natūralumas bei jauki patirtis fotografuojantis.",
+  "Siekiu, kad nuotraukos išliktų ne tik prisiminimu, bet ir jausmu, prie kurio norėtųsi sugrįžti vėl ir vėl. Kviečiu susipažinti su mano darbais ir kartu įamžinti jūsų ypatingas akimirkas.",
+],
     stats: [
       { number: "200+", label: "Fotosesijų" },
       { number: "50+", label: "Vestuvių" },
