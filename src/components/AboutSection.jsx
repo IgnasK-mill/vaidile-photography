@@ -76,7 +76,7 @@ export default function AboutSection() {
             </div>
 
             {/* Instagram link */}
-            <a
+            
               href={content.brand.instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
