@@ -431,7 +431,7 @@ a:hover { opacity: 0.55; }
   .note-row { grid-template-columns: 1fr; gap: 8px; }
   .carousel-slide img { height: 380px; width: 100%; }
   .carousel-slide { flex-direction: column; }
-  .carousel-slide img:nth-child(2) { display: none; }
+  .carousel-slide img:not(:first-child) { display: none; }
   .about-grid, .about-hero, .about-body, .contact-hero, .contact-body, .gallery-hero {
     grid-template-columns: 1fr;
   }
