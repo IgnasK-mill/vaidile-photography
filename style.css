@@ -57,6 +57,7 @@ a:hover { opacity: 0.55; }
   line-height: 0.85;
 }
 .intro {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 24px;
@@ -71,15 +72,16 @@ a:hover { opacity: 0.55; }
   color: #333;
 }
 .intro nav {
-  grid-column: 9 / span 4;
-  position: relative;
+  position: absolute;
+  right: 0;
+  top: -72px;
+  width: 32%;
   display: flex;
   flex-direction: column;
   gap: 10px;
   font-family: ui-monospace, monospace;
   font-size: 12px;
   letter-spacing: 0.06em;
-  transform: translateY(-72px);
 }
 
 .nav-easter-egg {
