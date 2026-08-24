@@ -72,12 +72,28 @@ a:hover { opacity: 0.55; }
 }
 .intro nav {
   grid-column: 9 / span 4;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
   font-family: ui-monospace, monospace;
   font-size: 12px;
   letter-spacing: 0.06em;
+}
+
+.nav-easter-egg {
+  position: absolute;
+  left: -186px;
+  top: -57px;
+  width: 190px;
+  height: auto;
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(14px 20px 16px rgba(0,0,0,0.25));
+}
+
+@media (max-width: 900px) {
+  .nav-easter-egg { display: none; }
 }
 .intro nav a {
   display: flex;
