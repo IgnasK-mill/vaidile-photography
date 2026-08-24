@@ -189,12 +189,12 @@ a:hover { opacity: 0.55; }
 
 .note-row {
   display: grid;
-  grid-template-columns: 60px 1fr;
+  grid-template-columns: 130px 1fr;
   gap: 24px;
   padding: 22px 40px 26px;
   border-top: 1px solid #000;
 }
-.note-row span { font-family: ui-monospace, monospace; font-size: 11px; color: #666; }
+.note-row span { font-family: ui-monospace, monospace; font-size: 11px; color: #666; line-height: 1.5; }
 .note-row p { margin: 0; max-width: 62ch; font-size: 15px; line-height: 1.7; color: #333; }
 
 /* about teaser / about page */
@@ -427,6 +427,7 @@ a:hover { opacity: 0.55; }
   .hero h1 { font-size: 60px; }
   .intro { grid-template-columns: 1fr; }
   .intro p, .intro nav { grid-column: 1 / -1; }
+  .note-row { grid-template-columns: 1fr; gap: 8px; }
   .carousel-slide img { height: 380px; width: 100%; }
   .carousel-slide { flex-direction: column; }
   .carousel-slide img:nth-child(2) { display: none; }
