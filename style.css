@@ -154,6 +154,8 @@ a:hover { opacity: 0.55; }
 }
 .carousel-dots button.active { background: #fff; }
 
+.carousel--mobile { display: none; }
+
 /* generic section */
 .section {
   border-bottom: 1px solid #000;
@@ -428,10 +430,14 @@ a:hover { opacity: 0.55; }
   .hero h1 { font-size: 60px; }
   .intro { grid-template-columns: 1fr; }
   .intro p, .intro nav { grid-column: 1 / -1; }
+  .intro nav { position: static; width: auto; margin-top: 16px; }
   .note-row { grid-template-columns: 1fr; gap: 8px; }
   .carousel-slide img { height: 380px; width: 100%; }
-  .carousel-slide { flex-direction: column; }
-  .carousel-slide img:not(:first-child) { display: none; }
+  .carousel--desktop { display: none; }
+  .carousel--mobile { display: block; }
+  .carousel--mobile .carousel-dots { right: 16px; gap: 4px; }
+  .carousel--mobile .carousel-dots button { width: 10px; }
+  .carousel--mobile .carousel-dots .counter { display: none; }
   .about-grid, .about-hero, .about-body, .contact-hero, .contact-body, .gallery-hero {
     grid-template-columns: 1fr;
   }
