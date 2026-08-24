@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Susisiekime — Vaidilė Gudašiūtė</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="page">
+
+  <header class="site-header">
+    <a href="index.html" class="label">← Indeksas</a>
+    <span class="brand">Vaidilė Gudašiūtė</span>
+    <span class="label" style="color:#999;">LT</span>
+  </header>
+
+  <div class="contact-hero">
+    <span class="label-col label">Užklausa</span>
+    <h1>Susisiekime</h1>
+  </div>
+
+  <div class="contact-body">
+
+    <div class="side">
+      <p class="lead serif">Parašykite, ką planuojate - atsakysiu per 1–2 dienas su laisvomis datomis ir pasiūlymu.</p>
+      <div class="direct">
+        <span class="lbl">Arba tiesiogiai</span>
+        <a href="mailto:vaidilephotography@gmail.com" class="email">vaidilephotography@gmail.com</a>
+        <span class="social">
+          <a href="https://www.instagram.com/gudasiute_photography/" target="_blank" rel="noopener">Instagram</a>
+          <span>·</span>
+          <a href="https://www.facebook.com/vaidile.gudasiute.1/?locale=lt_LT" target="_blank" rel="noopener">Facebook</a>
+        </span>
+      </div>
+    </div>
+
+    <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="contact-form">
+      <input type="hidden" name="form-name" value="contact" />
+      <p class="honeypot"><label>Nepildyti: <input name="bot-field" /></label></p>
+
+      <div class="form-row">
+        <label class="form-field">
+          <span class="flbl">Vardas</span>
+          <input type="text" name="vardas" placeholder="Jūsų vardas" required />
+        </label>
+        <label class="form-field">
+          <span class="flbl">El. paštas</span>
+          <input type="email" name="email" placeholder="jusu@pastas.lt" required />
+        </label>
+      </div>
+
+      <div class="form-row">
+        <label class="form-field">
+          <span class="flbl">Fotosesijos tipas</span>
+          <select name="tipas">
+            <option>Portretų sesija</option>
+            <option>Šeimos portretai</option>
+            <option>Renginys</option>
+            <option>Gimtadienis</option>
+            <option>Vestuvės</option>
+            <option>Kita</option>
+          </select>
+        </label>
+        <label class="form-field">
+          <span class="flbl">Numatoma data</span>
+          <input type="text" name="data" placeholder="2026 m. rugsėjis" />
+        </label>
+      </div>
+
+      <label class="form-field">
+        <span class="flbl">Jūsų idėja</span>
+        <textarea rows="4" name="idea" placeholder="Trumpai apie tai, ką norėtumėte įamžinti - vieta, žmonės, nuotaika."></textarea>
+      </label>
+
+      <div class="form-submit-row">
+        <span class="fineprint">Kainas siunčiu individualiai - pagal apimtį ir datą.</span>
+        <button type="submit">Siųsti užklausą</button>
+      </div>
+
+      <p class="form-success" id="form-success" hidden>Ačiū! Užklausa išsiųsta - atsakysiu artimiausiu metu.</p>
+    </form>
+
+  </div>
+
+  <div class="contact-footer">
+    <span class="name">Vaidilė Gudašiūtė</span>
+    <span class="role">Fotografė · Kaunas, LT</span>
+  </div>
+
+</div>
+
+<script>
+  var form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      fetch('/', { method: 'POST', body: new URLSearchParams(data).toString(), headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+        .then(function () {
+          form.hidden = true;
+          document.getElementById('form-success').hidden = false;
+        })
+        .catch(function () {
+          alert('Kažkas nepavyko. Parašykite tiesiogiai el. paštu.');
+        });
+    });
+  }
+</script>
+</body>
+</html>
