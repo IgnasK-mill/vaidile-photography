@@ -122,7 +122,8 @@ a:hover { opacity: 0.55; }
   gap: 1px;
 }
 .carousel-slide img {
-  width: 50%;
+  flex: 1;
+  min-width: 0;
   height: 560px;
   object-fit: cover;
   object-position: center 28%;
