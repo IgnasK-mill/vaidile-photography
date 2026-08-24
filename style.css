@@ -73,7 +73,7 @@ a:hover { opacity: 0.55; }
 }
 .intro nav {
   position: absolute;
-  right: 0;
+  right: 40px;
   top: -72px;
   width: 32%;
   display: flex;
