@@ -432,7 +432,7 @@ a:hover { opacity: 0.55; }
   .intro p, .intro nav { grid-column: 1 / -1; }
   .intro nav { position: static; width: auto; margin-top: 16px; }
   .note-row { grid-template-columns: 1fr; gap: 8px; }
-  .carousel-slide img { height: 380px; width: 100%; }
+  .carousel-slide img { aspect-ratio: 4 / 5; height: auto; width: 100%; }
   .carousel--desktop { display: none; }
   .carousel--mobile { display: block; }
   .carousel--mobile .carousel-dots { right: 16px; gap: 4px; }
