@@ -209,10 +209,10 @@ a:hover { opacity: 0.55; }
   border-bottom: 1px solid #000;
 }
 .about-grid .label-col { grid-column: 1 / span 2; }
-.about-grid .text-col { grid-column: 3 / span 7; display: flex; flex-direction: column; gap: 22px; }
+.about-grid .text-col { grid-column: 3 / span 5; display: flex; flex-direction: column; gap: 22px; justify-content: center; }
 .about-grid .text-col .lead { margin: 0; font-family: 'Libre Caslon Display', serif; font-size: 34px; line-height: 1.22; letter-spacing: -0.02em; }
 .about-grid .text-col p.body { margin: 0; max-width: 52ch; font-size: 15px; line-height: 1.7; color: #333; }
-.about-grid .photo-col { grid-column: 11 / span 2; }
+.about-grid .photo-col { grid-column: 9 / span 4; }
 .about-grid .photo-col img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; border: 1px solid #000; }
 
 /* services */
@@ -445,7 +445,7 @@ a:hover { opacity: 0.55; }
   .contact-hero h1, .contact-body .side, .contact-body .side, .contact-form, .gallery-hero .left, .gallery-hero .right {
     grid-column: 1 / -1;
   }
-  .about-grid .photo-col { max-width: 200px; }
+  .about-grid .photo-col { max-width: 320px; order: -1; }
   .portfolio-row { grid-template-columns: 40px 1fr; }
   .portfolio-row .sub, .portfolio-row .arrow { display: none; }
   .stats { grid-template-columns: 1fr; }
